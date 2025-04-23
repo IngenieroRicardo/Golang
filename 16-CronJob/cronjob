@@ -1,0 +1,26 @@
+#!/bin/bash
+# chkconfig: 345 99 10
+# description: My custom service
+
+case "$1" in
+   start)
+      echo "$(date): $@" >> /opt/main.status
+      /opt/main.bin >> /opt/main.status &
+      ;;
+   status)
+      cat /opt/main.status
+      ;;
+   stop)
+      echo "$(date): $@" >> /opt/main.status
+      killall main.bin
+      ;;
+   restart)
+      echo "$(date): $@" >> /opt/main.status
+      $0 stop
+      $0 start
+      ;;
+   *)
+      echo "Usage: $0 {start|stop|status|restart}"
+esac
+
+exit 0
