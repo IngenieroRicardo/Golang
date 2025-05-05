@@ -18,6 +18,7 @@ go build -o main.bin
 sudo cp main.bin /opt
 sudo cp logs.txt /opt
 sudo cp cronjob /etc/init.d/
+sudo update-rc.d cronhjob defaults
 sudo service cronhjob start
 sudo service cronjob status
 ```
