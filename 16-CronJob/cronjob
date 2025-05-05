@@ -12,7 +12,8 @@ case "$1" in
       ;;
    stop)
       echo "$(date): $@" >> /opt/main.status
-      killall main.bin
+      #killall main.bin
+      kill -9 $(pgrep -f [main.bin])
       ;;
    restart)
       echo "$(date): $@" >> /opt/main.status
