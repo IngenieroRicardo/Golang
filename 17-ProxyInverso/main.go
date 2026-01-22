@@ -31,6 +31,10 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 
                 if strings.Contains(sbody, tunel) {
                         sbody = strings.ReplaceAll(sbody, tunel, res.Request.Header.Get("Origin"))
+                        /*data = strings.ReplaceAll(data, jumpIp+":"+jumpPort, clientIP+":"+MyPort)
+			if jumpPort == "80" {
+				data = strings.ReplaceAll(data, jumpIp, clientIP+":"+MyPort)
+			}*/
                 }
                 res.Body = io.NopCloser(bytes.NewReader([]byte(sbody)))
                 res.Header.Del("Content-Length")
